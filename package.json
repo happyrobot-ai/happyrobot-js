@@ -1,0 +1,29 @@
+{
+  "name": "@happyrobot-ai/happyrobot-js",
+  "version": "1.0.0",
+  "description": "Happyrobot's JavaScript SDK",
+  "main": "happyrobot.ts",
+  "types": "happyrobot.d.ts",
+  "scripts": {
+    "build": "tsc && tsc --declaration",
+    "start": "npm run swager && npm run build && node dist/happyrobot.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happyrobot-ai/happyrobot-js.git"
+  },
+  "author": "happyrobot",
+  "license": "BSD 2-Clause",
+  "bugs": {
+    "url": "https://github.com/happyrobot-ai/happyrobot-js/issues"
+  },
+  "homepage": "https://github.com/happyrobot-ai/happyrobot-js#readme",
+  "dependencies": {
+    "@daily-co/daily-js": "^0.57.2",
+    "axios": "^1.6.7",
+    "events": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.13"
+  }
+}
