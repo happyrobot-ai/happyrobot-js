@@ -2,8 +2,8 @@
   "name": "@happyrobot-ai/happyrobot-js",
   "version": "1.0.0",
   "description": "Happyrobot's JavaScript SDK",
-  "main": "happyrobot.ts",
-  "types": "happyrobot.d.ts",
+  "main": "dist/happyrobot.ts",
+  "types": "dist/happyrobot.d.ts",
   "scripts": {
     "build": "tsc && tsc --declaration",
     "start": "npm run swager && npm run build && node dist/happyrobot.ts"
