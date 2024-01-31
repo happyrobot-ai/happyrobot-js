@@ -6,15 +6,15 @@ import axios from "axios";
 import EventEmitter from "events";
 
 type HappyrobotEventNames =
-	| "call-end"
-	| "call-start"
+	| "call-started"
+	| "call-ended"
 	| "participant-joined"
 	| "participant-left"
 	| "error";
 
 type HappyrobotEventListeners = {
-	"call-end": () => void;
-	"call-start": () => void;
+	"call-started": () => void;
+	"call-ended": () => void;
 	"participant-joined": (user_name: string, session_id: string) => void;
 	"participant-left": (session_id: string) => void;
 	error: (error: any) => void;
@@ -142,7 +142,7 @@ export default class HappyrobotClient extends HappyrobotEventEmitter {
 			});
 
 			this.call.on("left-meeting", () => {
-				this.emit("call-end");
+				this.emit("call-ended");
 				this.cleanup();
 			});
 
@@ -160,7 +160,6 @@ export default class HappyrobotClient extends HappyrobotEventEmitter {
 				this.emit("participant-left", e.participant.session_id);
 			});
 
-
 			this.call.on("track-started", async (e) => {
 				if (!e || !e.participant) return;
 				if (e.participant?.local) return;
@@ -174,6 +173,13 @@ export default class HappyrobotClient extends HappyrobotEventEmitter {
 			await this.call.join({
 				url: data.url,
 				subscribeToTracksAutomatically: false,
+			});
+
+			this.call.on("app-message", (e) => {
+				if (!e) return;
+				if (e.data === "listening") {
+					return this.emit("call-started");
+				}
 			});
 
 			// Add noise cancellation
