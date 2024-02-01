@@ -1,6 +1,6 @@
 {
   "name": "@happyrobot-ai/happyrobot-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Happyrobot's JavaScript SDK",
   "main": "dist/happyrobot.js",
   "types": "dist/happyrobot.d.ts",
@@ -20,7 +20,6 @@
   "homepage": "https://github.com/happyrobot-ai/happyrobot-js#readme",
   "dependencies": {
     "@daily-co/daily-js": "^0.57.2",
-    "axios": "^1.6.7",
     "events": "^3.3.0"
   },
   "devDependencies": {

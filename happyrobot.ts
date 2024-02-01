@@ -2,7 +2,6 @@ import DailyIframe, {
 	DailyCall,
 	DailyEventObjectParticipant
 } from "@daily-co/daily-js";
-import axios from "axios";
 import EventEmitter from "events";
 
 type HappyrobotEventNames =
@@ -122,12 +121,12 @@ export default class HappyrobotClient extends HappyrobotEventEmitter {
 
 		try {
 			// Create web call
-			const { data } = await axios
-			.post<CallDetails>(
-				`${this.baseUrl}/api/call/web`,
-				{assistant_id: assistant_id},
-				{headers: {Authorization: `Bearer ${this.apiKey}`}}
-			)
+			const res = await fetch(`${this.baseUrl}/api/call/web`, {
+				method: 'POST',
+				headers: {Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json'},
+				body: JSON.stringify({assistant_id: assistant_id}),
+			})
+			const data: CallDetails = await res.json();
 			this.callId = data.id;
 			
 			// Create daily call
