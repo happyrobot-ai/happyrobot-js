@@ -5,19 +5,13 @@ type State = "init" | "connecting" | "waiting" | "ready" | "error";
 
 function App() {
 	// Create happyrobot client
-	const [client] = React.useState(
-		() =>
-			new HappyrobotClient(
-				"20a1c2b6c9b19e5c2873001ff559aafb",
-				"https://staging.happyrobot.ai"
-			)
-	);
+	const [client] = React.useState(() => new HappyrobotClient("<api-key>"));
 
 	// Create state
 	const [state, setState] = React.useState<State>("init");
 	const start = () => {
 		// Start the call for the given assistant id
-		client.start("65b9e4375f56294dffaa5165");
+		client.start("<assistant-id>");
 		setState("connecting");
 
 		// Subscribe to event listeners

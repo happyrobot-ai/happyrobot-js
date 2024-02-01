@@ -1,6 +1,6 @@
 {
   "name": "@happyrobot-ai/happyrobot-js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Happyrobot's JavaScript SDK",
   "main": "dist/happyrobot.js",
   "types": "dist/happyrobot.d.ts",

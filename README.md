@@ -12,5 +12,5 @@ pnpm install @happyrobot-ai/happyrobot-js
 
 ## Example
 
-Following is a React example using typescript:
+Find a working example in the `example` folder. Replace `<api-key>` and `<assistant-id>` for the corresponding values.
 
